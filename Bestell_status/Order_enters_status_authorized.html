@@ -7,7 +7,7 @@
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
-    <title>Bestellung in Bearbeitung</title>
+    <title>Bestellung bestätigt</title>
     <!--[if mso]>
     <style type="text/css">
         table {border-collapse: collapse !important;}
@@ -77,77 +77,24 @@
             color: #000000 !important;
         }
         
-        /* Status Box - Blue for in progress */
+        /* Status Box - Green for authorized */
         .status-box {
-            background-color: #e7f3ff;
-            border: 1px solid #b3d9ff;
-            border-left: 4px solid #0066cc;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-left: 4px solid #28a745;
             padding: 20px;
             margin: 25px 0;
             border-radius: 5px;
         }
         
         .status-text {
-            color: #004d99;
+            color: #155724;
             font-weight: 600;
             font-size: 16px;
             margin-bottom: 10px;
         }
         
-        /* Progress Box */
-        .progress-box {
-            background-color: #fff3e0;
-            border: 1px solid #ffcc80;
-            border-left: 4px solid #ff9800;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 5px;
-        }
-        
-        /* Timeline Item */
-        .timeline-item {
-            display: flex;
-            align-items: flex-start;
-            margin: 15px 0;
-            padding: 10px 0;
-        }
-        
-        .timeline-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            margin-right: 15px;
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-        
-        .timeline-icon.completed {
-            background-color: #28a745;
-        }
-        
-        .timeline-icon.current {
-            background-color: #ff9800;
-        }
-        
-        .timeline-icon.pending {
-            background-color: #e9ecef;
-        }
-        
-        .timeline-content {
-            flex: 1;
-        }
-        
-        .timeline-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-description {
-            font-size: 12px;
-            color: #666666;
-        }
-        
-        /* Dividers */
+        /* Dividers - Reduced usage */
         .divider {
             border: 0;
             border-top: 1px solid #000000;
@@ -418,33 +365,14 @@
                 font-size: 8px !important;
             }
             
-            /* Status boxes mobile */
-            .status-box, .progress-box {
+            /* Status box mobile */
+            .status-box {
                 padding: 15px !important;
                 margin: 20px 0 !important;
             }
             
             .status-text {
                 font-size: 14px !important;
-            }
-            
-            .timeline-item {
-                margin: 10px 0 !important;
-                padding: 8px 0 !important;
-            }
-            
-            .timeline-icon {
-                width: 15px !important;
-                height: 15px !important;
-                margin-right: 10px !important;
-            }
-            
-            .timeline-title {
-                font-size: 11px !important;
-            }
-            
-            .timeline-description {
-                font-size: 9px !important;
             }
             
             /* Keep help section side by side - enhanced mobile styling */
@@ -599,7 +527,7 @@
         <main>
             <!-- Status Box -->
             <section class="status-box">
-                <p class="status-text">Bestellung in Bearbeitung</p>
+                <p class="status-text">Bestellung bestätigt</p>
                 <p style="margin: 0; font-size: 14px; color: #666666;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
             </section>
             
@@ -608,7 +536,7 @@
                 <p>
                     Liebe/r {{ order.orderCustomer.firstName }} {{ order.orderCustomer.lastName }}
                     <br><br>
-                    Gute Nachrichten! Ihre Bestellung wird gerade von unserem Team bearbeitet.
+                    Vielen Dank für Deine Bestellung! Wir haben Ihre Zahlung erfolgreich autorisiert und bereiten Ihre Bestellung für den Versand vor.
                     <br><br>
                     Unser Logistikteam bereitet deine Bestellung im Moment für den Versand vor.
                     <br>
@@ -616,51 +544,6 @@
                     spätestens einen Tag nach Bestelleingang. Für etwaige Rückfragen halte bitte
                     deine <span style="font-weight: 600;"> BESTELLNUMMER </span> bereit.
                 </p>
-            </section>
-
-            <!-- Progress Timeline -->
-            <section class="progress-box">
-                <h3 style="color: #f57c00; margin-top: 0; margin-bottom: 20px;">Bestellfortschritt</h3>
-                
-                <div class="timeline-item">
-                    <div class="timeline-icon completed"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">Bestellung eingegangen</div>
-                        <div class="timeline-description">{{ order.orderDateTime|format_datetime('medium', 'short', locale='de-DE') }}</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-icon completed"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">Zahlung bestätigt</div>
-                        <div class="timeline-description">Zahlung erfolgreich verarbeitet</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-icon current"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">Bestellung wird bearbeitet</div>
-                        <div class="timeline-description">Kommissionierung und Verpackung läuft</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-icon pending"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">Versandvorbereitung</div>
-                        <div class="timeline-description">Bestellung bereit für Versand</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-icon pending"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">Versandt</div>
-                        <div class="timeline-description">Paket ist unterwegs zu Ihnen</div>
-                    </div>
-                </div>
             </section>
 
             {% set shippingAddress = order.deliveries.first.shippingOrderAddress %}

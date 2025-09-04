@@ -7,7 +7,7 @@
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
-    <title>Zahlungsstatus geändert - {{ salesChannel.translated.name }}</title>
+    <title>Rückerstattung bearbeitet - {{ salesChannel.translated.name }}</title>
     <!--[if mso]>
     <style type="text/css">
         table {border-collapse: collapse !important;}
@@ -86,18 +86,18 @@
             color: #000000 !important;
         }
         
-        /* Status Box */
+        /* Status Box - Green for successful refund */
         .status-box {
-            background-color: #e8f4fd;
-            border: 1px solid #bee5eb;
-            border-left: 4px solid #17a2b8;
+            background-color: #e8f5e8;
+            border: 1px solid #c8e6c9;
+            border-left: 4px solid #4caf50;
             padding: 20px;
             margin: 25px 0;
             border-radius: 5px;
         }
         
         .status-text {
-            color: #17a2b8;
+            color: #388e3c;
             font-weight: 600;
             font-size: 16px;
             margin-bottom: 10px;
@@ -122,6 +122,22 @@
             color: #333333;
             display: inline-block;
             width: 120px;
+        }
+        
+        /* Refund Confirmation Box */
+        .refund-confirmation {
+            background-color: #e8f5e8;
+            border: 1px solid #c8e6c9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        .refund-confirmation-text {
+            color: #388e3c;
+            font-size: 14px;
+            margin: 0;
         }
         
         /* CTA Button */
@@ -246,7 +262,7 @@
                 margin: 10px 0 !important;
             }
             
-            .status-box, .order-details, .info-box {
+            .status-box, .order-details, .info-box, .refund-confirmation {
                 padding: 15px !important;
                 margin: 20px 0 !important;
             }
@@ -265,7 +281,7 @@
                 font-size: 10px !important;
             }
             
-            .info-text {
+            .info-text, .refund-confirmation-text {
                 font-size: 11px !important;
             }
             
@@ -375,14 +391,14 @@
         </header>
         
         <!-- Banner Image -->
-        <img src="https://schlafgut.com/media/e4/8d/e2/1689028863/tracking-email-banner.jpg" alt="Tracking Banner" class="banner-image">
+        <img src="https://schlafgut.com/media/e4/8d/e2/1689028863/tracking-email-banner.jpg" alt="Payment Banner" class="banner-image">
         
         <!-- Main Content -->
         <main>
-            <!-- Status Box -->
+            <!-- Status Box - Green for successful refund -->
             <section class="status-box">
-                <p class="status-text">Zahlungsstatus geändert</p>
-                <p style="margin: 0; font-size: 14px; color: #666666;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
+                <p class="status-text">Rückerstattung abgeschlossen</p>
+                <p style="margin: 0; font-size: 14px; color: #388e3c;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
             </section>
             
             <!-- Message Section -->
@@ -395,10 +411,22 @@
                     {% endif %}
                 </p>
                 <p>
-                    der Zahlungsstatus für Ihre Bestellung bei {{ salesChannel.translated.name }} hat sich geändert.
+                    wir haben die vollständige Rückerstattung für Ihre Bestellung {{ order.orderNumber }} erfolgreich bearbeitet.
                 </p>
                 <p>
-                    <strong>Die Bestellung hat jetzt den Zahlungsstatus: {{ order.transactions.first.stateMachineState.translated.name }}.</strong>
+                    <strong>Der gesamte Betrag wird in den nächsten Werktagen auf Ihr Konto zurückerstattet.</strong>
+                </p>
+                <p>
+                    Die Bearbeitungszeit kann je nach Zahlungsdienstleister und Bank zwischen 2-7 Werktagen variieren.
+                </p>
+            </section>
+
+            <!-- Refund Confirmation -->
+            <section class="refund-confirmation">
+                <p class="refund-confirmation-text">
+                    <strong>Rückerstattung erfolgreich eingeleitet</strong><br>
+                    Der vollständige Betrag wurde an Ihre ursprüngliche Zahlungsmethode zurückgesendet.
+                    Sie erhalten eine separate Bestätigung von Ihrem Zahlungsdienstleister.
                 </p>
             </section>
 
@@ -417,18 +445,45 @@
                 </div>
                 
                 <div class="order-detail-item">
+                    <span class="order-label">Rückerstattungsbetrag:</span>
+                    <strong style="color: #388e3c;">{{ order.amountTotal|currency(currencyIsoCode) }}</strong>
+                </div>
+                
+                <div class="order-detail-item">
+                    <span class="order-label">Zahlungsmethode:</span>
+                    {{ order.transactions.first.paymentMethod.translated.name }}
+                </div>
+                
+                <div class="order-detail-item">
                     <span class="order-label">Zahlungsstatus:</span>
-                    <strong>{{ order.transactions.first.stateMachineState.translated.name }}</strong>
+                    <strong style="color: #388e3c;">{{ order.transactions.first.stateMachineState.translated.name }}</strong>
                 </div>
             </section>
             
+            <!-- CTA Buttons -->
+            <div class="cta-button-container">
+                <a href="{{ rawUrl('frontend.account.order.single.page', { 'deepLinkCode': order.deepLinkCode }, salesChannel.domains|first.url) }}" class="cta-button">
+                    Rückerstattungsdetails anzeigen
+                </a>
+                <a href="{{ salesChannel.domains|first.url }}" class="cta-button" style="background-color: #4caf50 !important;">
+                    Weiter einkaufen
+                </a>
+            </div>
+            
+            <!-- Info Box -->
+            <section class="info-box">
+                <p class="info-text">
+                    <strong>Rückerstattungshinweis:</strong> Die Rückerstattung wird auf die ursprünglich verwendete Zahlungsmethode zurückerstattet. 
+                    Falls Sie den Betrag nicht innerhalb von 7 Werktagen erhalten, kontaktieren Sie bitte Ihren Zahlungsdienstleister oder unseren Kundenservice.
+                </p>
+            </section>
             
             <!-- Customer Service Section -->
             <section style="margin: 30px 0;">
                 <h2>Fragen zu deiner Bestellung?</h2>
                 <hr class="divider">
                 <p>
-                    Falls du Fragen zu deiner Bestellung oder dem Zahlungsstatus hast, sind wir gerne für dich da.
+                    Falls du Fragen zu deiner Bestellung oder der Rückerstattung hast, sind wir gerne für dich da.
                 </p>
                 <p style="margin: 20px 0;">
                     <strong>Telefon:</strong> +49 (0)7161/8002 67<br>

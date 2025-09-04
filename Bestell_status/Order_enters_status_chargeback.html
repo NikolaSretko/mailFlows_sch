@@ -7,7 +7,7 @@
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
-    <title>Zahlungsstatus geändert - {{ salesChannel.translated.name }}</title>
+    <title>Rückbuchung - Bestellstatus geändert</title>
     <!--[if mso]>
     <style type="text/css">
         table {border-collapse: collapse !important;}
@@ -35,7 +35,6 @@
             color: #000000 !important;
             background-color: #ffffff;
         }
-        
         /* Email Container */
         .email-container {
             max-width: 600px;
@@ -56,15 +55,6 @@
             margin-left: 0;
         }
         
-        /* Banner Image */
-        .banner-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        
         /* Typography */
         h1, h2 {
             font-size: 24px;
@@ -75,19 +65,59 @@
         
         p {
             font-size: 13px;
-            line-height: 1.5;
+            line-height: 19px;
             margin: 0 0 10px;
             color: #000000 !important;
         }
         
-        /* Message Section */
-        .message-section {
+        /* Confirmation Section */
+        .confirmation-message {
             padding: 20px 0;
+            padding-right: 60px;
             color: #000000 !important;
         }
         
-        /* Status Box */
+        /* Status Box - Red for chargeback */
         .status-box {
+            background-color: #f8d7da;
+            border: 1px solid #f1b0b7;
+            border-left: 4px solid #dc3545;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        .status-text {
+            color: #721c24;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        /* Chargeback Details Box */
+        .chargeback-details-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-left: 4px solid #f39c12;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        .chargeback-detail {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #333333;
+        }
+        
+        .chargeback-label {
+            font-weight: 700;
+            display: inline-block;
+            width: 140px;
+        }
+        
+        /* Action Box */
+        .action-box {
             background-color: #e8f4fd;
             border: 1px solid #bee5eb;
             border-left: 4px solid #17a2b8;
@@ -96,40 +126,30 @@
             border-radius: 5px;
         }
         
-        .status-text {
-            color: #17a2b8;
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 10px;
+        /* Dividers */
+        .divider {
+            border: 0;
+            border-top: 1px solid #000000;
+            margin: 8px 0;
+            width: 100%;
         }
         
         /* Order Details */
-        .order-details {
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 8px;
+        .order-number {
+            font-size: 13px;
+            margin: 20px 0;
         }
         
-        .order-detail-item {
-            margin: 8px 0;
-            font-size: 14px;
+        .order-number .label {
+            font-weight: 700;
+            text-transform: uppercase;
         }
         
-        .order-label {
-            font-weight: 600;
-            color: #333333;
-            display: inline-block;
-            width: 120px;
+        .order-number .value {
+            font-weight: 700;
         }
         
         /* CTA Button */
-        .cta-button-container {
-            text-align: center;
-            margin: 30px 0;
-        }
-        
         .cta-button {
             display: inline-block;
             padding: 12px 24px;
@@ -139,31 +159,6 @@
             border-radius: 5px;
             font-size: 16px;
             font-weight: 400;
-            margin: 10px;
-        }
-        
-        /* Info Box */
-        .info-box {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-left: 4px solid #f39c12;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-        
-        .info-text {
-            color: #856404;
-            font-size: 13px;
-            margin: 0;
-        }
-        
-        /* Dividers */
-        .divider {
-            border: 0;
-            border-top: 1px solid #000000;
-            margin: 8px 0;
-            width: 100%;
         }
         
         /* Shipping Note */
@@ -210,6 +205,10 @@
         }
         
         /* Footer */
+        .footer {
+            margin-top: 40px;
+        }
+        
         .footer-logo-container {
             margin-bottom: 20px;
             text-align: left;
@@ -221,8 +220,9 @@
             display: block;
         }
         
-        /* Mobile Styles */
+        /* Super Simple Mobile Styles */
         @media screen and (max-width: 600px) {
+            /* Basic container and spacing */
             body, html {
                 margin: 0 !important;
                 padding: 0 !important;
@@ -235,6 +235,7 @@
                 padding: 10px !important;
             }
             
+            /* Simpler typography */
             * {
                 font-size: 12px !important;
                 line-height: 1.4 !important;
@@ -246,7 +247,8 @@
                 margin: 10px 0 !important;
             }
             
-            .status-box, .order-details, .info-box {
+            /* Status boxes mobile */
+            .status-box, .chargeback-details-box, .action-box {
                 padding: 15px !important;
                 margin: 20px 0 !important;
             }
@@ -255,40 +257,21 @@
                 font-size: 14px !important;
             }
             
-            .order-detail-item {
+            .chargeback-detail {
                 font-size: 11px !important;
                 margin: 6px 0 !important;
             }
             
-            .order-label {
+            .chargeback-label {
                 width: 100px !important;
                 font-size: 10px !important;
             }
-            
-            .info-text {
-                font-size: 11px !important;
-            }
-            
-            table {
-                width: 100% !important;
-                display: table !important;
-                table-layout: fixed !important;
-            }
-            
-            tr {
-                display: table-row !important;
-            }
-            
-            td {
-                display: table-cell !important;
-                padding: 5px 2px !important;
-                font-size: 8px !important;
-            }
-            
+
             .shipping-note{
                 font-size: 8px !important;
             }
             
+            /* Keep help section side by side - enhanced mobile styling */
             .help-section {
                 display: table !important;
                 width: 100% !important;
@@ -307,10 +290,12 @@
                 font-size: 12px !important;
             }
             
+            /* Left column specific styling */
             .help-section td:first-child {
                 padding: 12px 8px 12px 0 !important;
             }
             
+            /* Right column specific styling */
             .help-section td.help-right {
                 padding: 12px !important;
                 border-radius: 6px !important;
@@ -332,15 +317,22 @@
                 margin: 5px 0 !important;
             }
             
+            /* Make images in help section smaller */
             .help-section img[src*="Schlafgut-393"] {
                 margin: 5px 0 !important;
             }
             
+            /* Make links display properly */
             a {
                 display: inline-block !important;
                 color: #000000 !important;
                 text-decoration: underline !important;
                 font-size: 8px !important;  
+            }
+            
+            /* Footer simplified */
+            .footer {
+                margin-top: 20px !important;
             }
             
             .footer-logo-container {
@@ -358,10 +350,8 @@
             }
             
             .cta-button {
-                width: 90% !important;
+                width: 100% !important;
                 box-sizing: border-box !important;
-                display: block !important;
-                margin: 10px auto !important;
             }
         }
     </style>
@@ -374,74 +364,97 @@
             <img src="https://www.schlafgut.com/media/c5/5f/12/1676920084/schlafgut_logo_newsletter.png" alt="Company Logo" class="primary-logo">
         </header>
         
-        <!-- Banner Image -->
-        <img src="https://schlafgut.com/media/e4/8d/e2/1689028863/tracking-email-banner.jpg" alt="Tracking Banner" class="banner-image">
-        
         <!-- Main Content -->
         <main>
             <!-- Status Box -->
             <section class="status-box">
-                <p class="status-text">Zahlungsstatus geändert</p>
+                <p class="status-text">Rückbuchung verarbeitet</p>
                 <p style="margin: 0; font-size: 14px; color: #666666;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
             </section>
             
-            <!-- Message Section -->
-            <section class="message-section">
+            <!-- Confirmation Message -->
+            <section class="confirmation-message">
                 <p>
-                    {% if order.orderCustomer is defined and order.orderCustomer and order.orderCustomer.firstName is defined %}
-                        Liebe/r {{ order.orderCustomer.firstName }} {{ order.orderCustomer.lastName }},
-                    {% else %}
-                        Hallo,
-                    {% endif %}
-                </p>
-                <p>
-                    der Zahlungsstatus für deine Bestellung bei {{ salesChannel.translated.name }} vom {{ order.orderDateTime|format_datetime('medium', 'short', locale='de-DE') }} hat sich geändert.
-                </p>
-                <p>
-                    <strong>Die Bestellung hat jetzt den Zahlungsstatus: {{ order.transactions.first.stateMachineState.translated.name }}.</strong>
+                    Liebe/r {{ order.orderCustomer.firstName }} {{ order.orderCustomer.lastName }},
+                    <br><br>
+                    wir müssen Sie darüber informieren, dass für Ihre Bestellung eine Rückbuchung (Chargeback) eingegangen ist.
+                    <br><br>
+                    Dies bedeutet, dass die Zahlung von Ihrer Bank oder Ihrem Kreditkartenunternehmen zurückgezogen wurde.
                 </p>
             </section>
 
-            <!-- Order Details -->
-            <section class="order-details">
-                <h2 style="margin-top: 0; color: #333333;">Bestelldetails</h2>
-                
-                <div class="order-detail-item">
-                    <span class="order-label">Bestellnummer:</span>
+            <!-- Chargeback Details -->
+            <section class="chargeback-details-box">
+                <h3 style="color: #f39c12; margin-top: 0; margin-bottom: 15px;">Details zur Rückbuchung</h3>
+                <div class="chargeback-detail">
+                    <span class="chargeback-label">Bestellnummer:</span>
                     <strong>{{ order.orderNumber }}</strong>
                 </div>
-                
-                <div class="order-detail-item">
-                    <span class="order-label">Bestelldatum:</span>
+                <div class="chargeback-detail">
+                    <span class="chargeback-label">Betrag:</span>
+                    <strong>{{ order.price.totalPrice|number_format(2, ',', '.') }}€</strong>
+                </div>
+                <div class="chargeback-detail">
+                    <span class="chargeback-label">Datum:</span>
                     {{ order.orderDateTime|format_datetime('medium', 'short', locale='de-DE') }}
                 </div>
-                
-                <div class="order-detail-item">
-                    <span class="order-label">Zahlungsstatus:</span>
-                    <strong>{{ order.transactions.first.stateMachineState.translated.name }}</strong>
+                <div class="chargeback-detail">
+                    <span class="chargeback-label">Zahlungsmethode:</span>
+                    {{ order.transactions.first.paymentMethod.translated.name }}
                 </div>
+            </section>
+            
+            <!-- Action Required -->
+            <section class="action-box">
+                <h3 style="color: #17a2b8; margin-top: 0; margin-bottom: 15px;">Nächste Schritte</h3>
+                <p style="margin-bottom: 15px;">
+                    Bitte kontaktieren Sie uns umgehend, damit wir diese Angelegenheit gemeinsam klären können:
+                </p>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>Überprüfen Sie Ihre Kontobewegungen</li>
+                    <li>Kontaktieren Sie Ihre Bank bei Unklarheiten</li>
+                    <li>Nehmen Sie Kontakt zu unserem Kundenservice auf</li>
+                </ul>
+                
+                <!-- Support CTA Button -->
+                <div style="text-align: center; margin: 20px 0;">
+                    <a href="mailto:shop@schlafgut.com?subject=Rückbuchung%20Bestellung%20{{ order.orderNumber }}" target="_blank" class="cta-button">
+                        Kundenservice kontaktieren
+                    </a>
+                </div>
+            </section>
+            
+            <!-- Order Details -->
+            <section>
+                <h2 style="font-size: 24px; font-weight: 400; color: #000000 !important;">Bestelldetails</h2>
+                <p class="order-number">
+                    <span class="label">BESTELLNUMMER:</span>
+                    <span class="value">{{ order.orderNumber }}</span>
+                </p>
+                <hr class="divider">
             </section>
             
             <!-- Customer Service Section -->
             <section style="margin: 30px 0;">
-                <h2>Fragen zu deiner Bestellung?</h2>
+                <h2>Wir sind für Sie da</h2>
                 <hr class="divider">
                 <p>
-                    Falls du Fragen zu deiner Bestellung oder dem Zahlungsstatus hast, sind wir gerne für dich da.
+                    Unser Kundenservice-Team steht Ihnen zur Verfügung, um diese Situation zu klären und eine Lösung zu finden.
                 </p>
                 <p style="margin: 20px 0;">
-                    <strong>Telefon:</strong> +49 (0)7161/8002 67<br>
-                    <strong>E-Mail:</strong> <a href="mailto:shop@schlafgut.com" style="color: #000000 !important; text-decoration: underline;">shop@schlafgut.com</a>
+                    <strong>Telefon:</strong> +49 (0)7161–8002 67<br>
+                    <strong>E-Mail:</strong> <a href="mailto:shop@schlafgut.com" style="color: #000000 !important; text-decoration: underline;">shop@schlafgut.com</a><br>
+                    <strong>Öffnungszeiten:</strong> Mo-Fr 9:00-17:00 Uhr
                 </p>
             </section>
             
             <!-- Shipping Note -->
             <section class="shipping-note">
                 <p style="color: #27e83b !important;">
-                    NACHHALTIGER VERSAND:<br>
+                    LÄSST DICH UND UNS GUT SCHLAFEN:<br>
                     Wir versenden mit
                     <strong style="font-weight: 700; color: #27e83b !important;">DHL GoGreen</strong>
-                    klimaneutral und verwenden ausschließlich plastikfreie Verpackungen.
+                    klimaneutral und benutzen kein Plastik bei unseren Verpackungen.
                 </p>
             </section>
             
@@ -455,7 +468,7 @@
                         <p style="font-size: 13px; line-height: 19px; margin: 10px 0; font-style: normal;">
                             Gerne beantworten wir deine Fragen.<br>
                             Erreichen kannst du uns per Telefon oder Mail:<br>
-                            +49 (0)7161/8002 67<br>
+                            +49 (0)7161–8002 67<br>
                             <a href="mailto:shop@schlafgut.com" style="color: #000000 !important; text-decoration: none;">shop@schlafgut.com</a>
                         </p>
                         <h2 style="font-size: 24px; font-weight: 400; margin: 20px 0 10px 0; padding: 0; line-height: 28px; white-space: nowrap; color: #000000 !important;">Folge uns!</h2>
@@ -473,13 +486,12 @@
                             </a>
                         </div>
                         
-                        <!-- Footer Logo -->
+                        <!-- Footer Logo moved here -->
                         <div class="footer-logo-container" style="margin-top: 40px;">
                             <img src="https://www.schlafgut.com/media/e2/d8/74/1730377403/THE_READER%202.png" alt="Footer Logo" class="footer-logo">
                         </div>
                     </td>
                     
-                    <!-- Right Column -->
                     <td class="help-column help-right" width="48%" valign="top" style="padding: 20px; background-color: #f6f6f6; border-radius: 10px; vertical-align: top;">
                         <h2 style="font-size: 24px; font-weight: 400; margin: 0 0 10px 0; padding: 0; line-height: 28px; white-space: nowrap; height: 28px; color: #000000 !important;">Mehr schlafgut!</h2>
                         <hr style="border: 0; border-top: 1px solid #000000; margin: 8px 0; width: 100%;">
@@ -487,34 +499,22 @@
                         <img src="https://www.schlafgut.com/media/d2/8c/77/1727182583/Schlafgut-356%201.jpg" width="100%" alt="Shop Preview" style="display: block; border-radius: 5px; margin: 10px 0; padding-bottom: 10px;">
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 8px;">
-                                <a href="https://www.schlafgut.com/spannbettlaken/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;">
-                                    <img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="arrow" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Spannbettlaken
-                                </a>
+                                    <a href="https://www.schlafgut.com/spannbettlaken/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Spannbettlaken</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                <a href="https://www.schlafgut.com/bettwaesche/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;">
-                                    <img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="arrow" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Bettwäsche
-                                </a>
+                                    <a href="https://www.schlafgut.com/bettwaesche/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Bettwäsche</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                <a href="https://www.schlafgut.com/kissenbezuege/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;">
-                                    <img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="arrow" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Kissenbezüge
-                                </a>
+                                    <a href="https://www.schlafgut.com/kissenbezuege/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Kissenbezüge</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                <a href="https://www.schlafgut.com/fuer-kinder/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;">
-                                    <img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="arrow" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Für Kinder
-                                </a>
+                                <a href="https://www.schlafgut.com/fuer-kinder/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Für Kinder</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                <a href="https://www.schlafgut.com/bettwaren/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;">
-                                    <img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="arrow" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Bettwaren
-                                </a>
+                                    <a href="https://www.schlafgut.com/bettwaren/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Bettwaren</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                <a href="https://www.schlafgut.com/matratzenschutz/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;">
-                                    <img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="arrow" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Matratzenschutz
-                                </a>
+                                <a href="https://www.schlafgut.com/matratzenschutz/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Matratzenschutz</a>
                             </li>
                         </ul>
                     </td>

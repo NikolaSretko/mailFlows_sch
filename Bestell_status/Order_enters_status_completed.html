@@ -7,7 +7,7 @@
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
-    <title>Bestellbestätigung</title>
+    <title>Bestellung abgeschlossen</title>
     <!--[if mso]>
     <style type="text/css">
         table {border-collapse: collapse !important;}
@@ -77,7 +77,44 @@
             color: #000000 !important;
         }
         
-        /* Dividers - Reduced usage */
+        /* Status Box - Blue for completed */
+        .status-box {
+            background-color: #cce5ff;
+            border: 1px solid #b3d9ff;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        .status-text {
+            color: #0056b3;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        /* Review Box */
+        .review-box {
+            background-color: #fff3e0;
+            border: 1px solid #ffcc80;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        /* Reorder Box */
+        .reorder-box {
+            background-color: #e8f5e8;
+            border: 1px solid #c8e6c9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        /* Dividers */
         .divider {
             border: 0;
             border-top: 1px solid #000000;
@@ -100,73 +137,29 @@
             font-weight: 700;
         }
         
-        /* Order Summary */
-        .summary-container {
-            background-color: #f6f6f6;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        
-        /* Product Table */
-        .product-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 10px 0;
-        }
-        
-        .product-table td {
-            padding: 10px 0;
-            vertical-align: top;
-            color: #000000 !important;
-        }
-        
-        .product-image {
-            width: 60px;
-            height: auto;
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            text-decoration: none;
             border-radius: 5px;
-            display: block;
-            margin-right: 15px;
+            font-size: 16px;
+            font-weight: 400;
         }
         
-        .product-name {
-            font-weight: 700;
+        /* Secondary Button */
+        .secondary-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #ffffff !important;
             color: #000000 !important;
-        }
-        
-        .product-link {
-            text-decoration: underline;
-            color: #000000 !important;
-        }
-        
-        .product-quantity {
-            text-align: center;
-            color: #000000 !important;
-        }
-        
-        .product-price {
-            text-align: right;
-            color: #000000 !important;
-        }
-        
-        /* Address Section */
-        .address-section {
-            display: table;
-            width: 100%;
-            margin: 20px 0;
-        }
-        
-        .address-column {
-            display: table-cell;
-            width: 50%;
-            vertical-align: top;
-        }
-        
-        address {
-            font-style: normal;
-            font-size: 13px;
-            line-height: 19px;
-            color: #000000 !important;
+            text-decoration: none;
+            border: 2px solid #000000;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 400;
         }
         
         /* Shipping Note */
@@ -178,7 +171,7 @@
             margin-bottom: 60px;
         }
         
-        /* Help Section - Using Table Layout for Better Email Compatibility */
+        /* Help Section */
         .help-section {
             width: 100%;
             margin: 0px 0;
@@ -212,43 +205,6 @@
             margin: 10px 0;
         }
         
-        /* Category List */
-        .product-categories {
-            margin: 10px 0;
-        }
-        
-        .product-categories ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .product-categories li {
-            margin-bottom: 10px;
-            font-size: 14px;
-            text-decoration: none;
-        }
-        
-        .product-categories a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #000000 !important;
-            font-size: 14px;
-            font-family: sans-serif;
-            gap: 8px;
-            transition: color 0.2s ease;
-        }
-        
-        .product-categories .icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 21px;
-            height: 21px;
-            flex-shrink: 0;
-        }
-        
         /* Footer */
         .footer {
             margin-top: 40px;
@@ -264,39 +220,8 @@
             height: auto;
             display: block;
         }
-
-         /* Tracking Button Styles */
-        .tracking-button-container {
-            margin: 25px 0;
-            text-align: left;
-        }
         
-        .tracking-button {
-            background-color: #000000;
-            border-radius: 33px;
-            width: 262px;
-            height: 45px;
-            display: inline-block;
-            text-align: center;
-            vertical-align: middle;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        
-        .tracking-button-text {
-            color: #ffffff !important;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 45px;
-            text-decoration: none;
-            text-align: center;
-            display: block;
-            width: 100%;
-        }
-        
-        /* Mobile Styles - Simplified and Fixed */
+        /* Super Simple Mobile Styles */
         @media screen and (max-width: 600px) {
             /* Basic container and spacing */
             body, html {
@@ -311,7 +236,7 @@
                 padding: 10px !important;
             }
             
-            /* Typography fixes */
+            /* Simpler typography */
             * {
                 font-size: 12px !important;
                 line-height: 1.4 !important;
@@ -323,51 +248,21 @@
                 margin: 10px 0 !important;
             }
             
-            /* Product table fixes */
-            .product-table td {
-                vertical-align: top !important;
-                padding: 8px 2px !important;
+            /* Status boxes mobile */
+            .status-box, .review-box, .reorder-box {
+                padding: 15px !important;
+                margin: 20px 0 !important;
             }
             
-            .product-image {
-                width: 50px !important;
-                height: auto !important;
-                margin-right: 8px !important;
-            }
-            
-            div[style*="margin-left: 75px"] {
-                margin-left: 58px !important;
-                font-size: 10px !important;
-            }
-            
-            /* Tracking button mobile */
-            .tracking-button {
-                width: 100% !important;
-                max-width: 280px !important;
-                height: 40px !important;
-            }
-            
-            .tracking-button-text {
+            .status-text {
                 font-size: 14px !important;
-                line-height: 40px !important;
             }
 
             .shipping-note{
-                font-size: 10px !important;
+                font-size: 8px !important;
             }
             
-            /* Address section stacked */
-            .address-section {
-                display: block !important;
-            }
-            
-            .address-column {
-                display: block !important;
-                width: 100% !important;
-                margin-bottom: 15px !important;
-            }
-            
-            /* FIXED: Help Section - Use proper table layout for mobile */
+            /* Keep help section side by side - enhanced mobile styling */
             .help-section {
                 display: table !important;
                 width: 100% !important;
@@ -386,10 +281,12 @@
                 font-size: 12px !important;
             }
             
+            /* Left column specific styling */
             .help-section td:first-child {
                 padding: 12px 8px 12px 0 !important;
             }
             
+            /* Right column specific styling */
             .help-section td.help-right {
                 padding: 12px !important;
                 border-radius: 6px !important;
@@ -411,11 +308,12 @@
                 margin: 5px 0 !important;
             }
             
+            /* Make images in help section smaller */
             .help-section img[src*="Schlafgut-393"] {
                 margin: 5px 0 !important;
             }
             
-            /* Links */
+            /* Make links display properly */
             a {
                 display: inline-block !important;
                 color: #000000 !important;
@@ -423,7 +321,11 @@
                 font-size: 8px !important;  
             }
             
-            /* Footer */
+            /* Footer simplified */
+            .footer {
+                margin-top: 20px !important;
+            }
+            
             .footer-logo-container {
                 margin-bottom: 10px !important;
                 text-align: center !important;
@@ -437,11 +339,18 @@
             .insta_icon{
                 padding-right: 4px !important;
             }
+            
+            .cta-button, .secondary-button {
+                width: 100% !important;
+                box-sizing: border-box !important;
+                margin: 10px 0 !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="email-container">
+
         <!-- Header -->
         <header class="header">
             <img src="https://www.schlafgut.com/media/c5/5f/12/1676920084/schlafgut_logo_newsletter.png" alt="Company Logo" class="primary-logo">
@@ -449,39 +358,65 @@
         
         <!-- Main Content -->
         <main>
+            <!-- Status Box -->
+            <section class="status-box">
+                <p class="status-text">Bestellung erfolgreich abgeschlossen</p>
+                <p style="margin: 0; font-size: 14px; color: #666666;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
+            </section>
+            
             <!-- Confirmation Message -->
             <section class="confirmation-message">
                 <p>
-                    Liebe/r  {{ order.orderCustomer.firstName }} {{ order.orderCustomer.lastName }}
-                    <br>
-                    <h2 style="font-size: 24px; font-weight: 400; color: #000000 !important;">Deine Bestellung ist auf dem Weg zu dir!</h2>
+                    Liebe/r {{ order.orderCustomer.firstName }} {{ order.orderCustomer.lastName }},
+                    <br><br>
+                    Ihre Bestellung wurde erfolgreich abgeschlossen! Wir hoffen, Sie sind mit Ihren neuen schlafgut Produkten zufrieden.
+                    <br><br>
+                    Vielen Dank für Ihr Vertrauen in unsere Produkte für einen erholsamen Schlaf.
                 </p>
+            </section>
+
+            <!-- Review Request -->
+            <section class="review-box">
+                <h3 style="color: #f57c00; margin-top: 0; margin-bottom: 15px;">Wie war Ihre Erfahrung?</h3>
+                <p style="margin-bottom: 15px;">
+                    Ihre Meinung ist uns wichtig! Teilen Sie Ihre Erfahrung mit anderen Kunden und helfen Sie uns, unser Service zu verbessern.
+                </p>
+                <p style="margin-bottom: 20px;">
+                    <strong>Bewerten Sie Ihre Bestellung:</strong>
+                </p>
+                
+                <!-- Review CTA Button -->
+                <div style="text-align: center; margin: 20px 0;">
+                    <a href="https://www.schlafgut.com/review/{{ order.orderNumber }}" target="_blank" class="cta-button">
+                        Jetzt bewerten
+                    </a>
+                </div>
+            </section>
+            
+            <!-- Reorder Section -->
+            <section class="reorder-box">
+                <h3 style="color: #2e7d32; margin-top: 0; margin-bottom: 15px;">Wieder bestellen?</h3>
+                <p style="margin-bottom: 15px;">
+                    Hat Ihnen Ihre Bestellung gefallen? Mit einem Klick können Sie dieselben Artikel erneut bestellen.
+                </p>
+                
+                <!-- Reorder CTA Button -->
+                <div style="text-align: center; margin: 20px 0;">
+                    <a href="https://www.schlafgut.com/reorder/{{ order.orderNumber }}" target="_blank" class="secondary-button">
+                        Erneut bestellen
+                    </a>
+                </div>
             </section>
             
             <!-- Order Details -->
             <section>
+                <h2 style="font-size: 24px; font-weight: 400; color: #000000 !important;">Bestelldetails</h2>
                 <p class="order-number">
                     <span class="label">BESTELLNUMMER:</span>
                     <span class="value">{{ order.orderNumber }}</span>
                 </p>
-
                 <hr class="divider">
             </section>
-            
-            <!-- Tracking Button -->
-            {% set shippingAddress = order.deliveries.first.shippingOrderAddress %}
-            {% set trackingLink = "https://www.schlafgut.com/tracking/?orderNumber=" ~ order.orderNumber ~ "&zipCode=" ~ shippingAddress.zipcode ~ "&ref=karla"%}
-            
-            <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5; text-align: center; margin: 30px 0;">
-              Du kannst den Status deiner Bestellung jederzeit einsehen:<br><br>
-              <a href="{{ trackingLink }}" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #000 !important; color:  #eee !important; text-decoration: none; border-radius: 5px;">
-                Bestellung anzeigen
-              </a><br><br>
-              Falls du zur Eingabe deiner Daten aufgefordert wirst:<br>
-              Bestellnummer: <strong>{{ order.orderNumber }}</strong><br>
-              Postleitzahl: <strong>{{ shippingAddress.zipcode }}</strong>
-            </p>
-
             
             <!-- Order Summary -->
             <section>
@@ -490,9 +425,9 @@
                     <!-- Header Row -->
                     <table width="100%" cellspacing="0" cellpadding="0" border="0">
                         <tr>
-                            <td width="70%" style="text-align: left; color: #000000 !important; font-weight: 700; text-transform: uppercase; font-size: 13px; padding: 0;">ARTIKEL</td>
-                            <td width="15%" style="text-align: center; color: #000000 !important; font-weight: 700; text-transform: uppercase; font-size: 13px; padding: 0;">ANZAHL</td>
-                            <td width="15%" style="text-align: right; color: #000000 !important; font-weight: 700; text-transform: uppercase; font-size: 13px; padding: 0;">PREIS</td>
+                            <td class="table-header artikel" width="70%" style="text-align: left; color: #000000 !important; font-weight: 700; text-transform: uppercase; font-size: 13px; padding: 0;">ARTIKEL</td>
+                            <td class="table-header anzahl" width="15%" style="text-align: center; color: #000000 !important; font-weight: 700; text-transform: uppercase; font-size: 13px; padding: 0;">ANZAHL</td>
+                            <td class="table-header preis" width="15%" style="text-align: right; color: #000000 !important; font-weight: 700; text-transform: uppercase; font-size: 13px; padding: 0;">PREIS</td>
                         </tr>
                     </table>
                     <hr class="divider">
@@ -507,7 +442,7 @@
                                 {% endif %}
                                 
                                 <div style="margin-left: 75px; color: #000000 !important;">
-                                    <span class="product-name" style="font-weight: 700; color: #000000 !important;">{{ lineItem.label |slice(0, 50) }}</span><br>
+                                    <span class="product-name" style="font-weight: 700; color: #000000 !important;">{{ lineItem.label }}</span><br>
                                     {% if lineItem.payload.options is defined and lineItem.payload.options|length > 0 %}
                                     {% for option in lineItem.payload.options %}
                                     <span style="color: #000000 !important;">{{ option.group }}: {{ option.option }}</span><br>
@@ -516,7 +451,7 @@
                                     {% if lineItem.payload.productNumber is defined and lineItem.label is defined %}
                                     {% set productSlug = lineItem.label|replace({' ': '-'}) %}
                                     {% set productLink = 'https://www.schlafgut.com/' ~ productSlug ~ '/' ~ lineItem.payload.productNumber %}
-                                    <a href="{{ productLink }}" style="color: #000000; text-decoration: underline;">zum Produkt</a>
+                                    <a href="{{ productLink }}" style="color: #000000; text-decoration: underline;">erneut kaufen</a>
                                     {% endif %}
                                 </div>
                             </td>
@@ -553,48 +488,60 @@
                         </tr>
                     </table>
                     
-                    <!-- Address Information -->
-                    <div class="address-section" style="margin-top: 20px; padding-left: 0;">
-                        <div class="address-column" style="width: 50%; padding-left: 0;">
-                            <!-- Lieferadresse -->
-                            {% set delivery = order.deliveries.first %}
-                            <address style="color: #000000 !important;">
-                                <strong style="font-weight: 700; color: #000000 !important;">LIEFERADRESSE:</strong><br>
-                                {{ delivery.shippingOrderAddress.firstName }} {{ delivery.shippingOrderAddress.lastName }}<br>
-                                {% if delivery.shippingOrderAddress.company %}
-                                    {{ delivery.shippingOrderAddress.company }}<br>
-                                {% endif %}
-                                {{ delivery.shippingOrderAddress.street }}<br>
-                                {{ delivery.shippingOrderAddress.zipcode }} {{ delivery.shippingOrderAddress.city }}<br>
-                                {{ delivery.shippingOrderAddress.country.translated.name }}
-                            </address>
-                        </div>
-                        <div class="address-column" style="width: 50%;">
-                            <!-- Rechnungsadresse -->
-                            {% set billingAddress = null %}
-                            {% for address in order.addresses %}
-                                {% if address.id == order.billingAddressId %}
-                                    {% set billingAddress = address %}
-                                {% endif %}
-                            {% endfor %}
-                            
-                            {% if billingAddress == null %}
-                                {% set billingAddress = delivery.shippingOrderAddress %}
+                   <!-- Address Information -->
+                   <div class="address-section" style="margin-top: 20px; padding-left: 0;">
+                    <div class="address-column" style="width: 50%; padding-left: 0;">
+                        <!-- Lieferadresse -->
+                        {% set delivery = order.deliveries.first %}
+                        <address style="color: #000000 !important;">
+                            <strong style="font-weight: 700; color: #000000 !important;">LIEFERADRESSE:</strong><br>
+                            {{ delivery.shippingOrderAddress.firstName }} {{ delivery.shippingOrderAddress.lastName }}<br>
+                            {% if delivery.shippingOrderAddress.company %}
+                                {{ delivery.shippingOrderAddress.company }}<br>
                             {% endif %}
-                            
-                            <address style="color: #000000 !important;">
-                                <strong style="font-weight: 700; color: #000000 !important;">RECHNUNGSADRESSE:</strong><br>
-                                {{ billingAddress.firstName }} {{ billingAddress.lastName }}<br>
-                                {% if billingAddress.company %}
-                                    {{ billingAddress.company }}<br>
-                                {% endif %}
-                                {{ billingAddress.street }}<br>
-                                {{ billingAddress.zipcode }} {{ billingAddress.city }}<br>
-                                {{ billingAddress.country.translated.name }}
-                            </address>
-                        </div>
+                            {{ delivery.shippingOrderAddress.street }}<br>
+                            {{ delivery.shippingOrderAddress.zipcode }} {{ delivery.shippingOrderAddress.city }}<br>
+                            {{ delivery.shippingOrderAddress.country.translated.name }}
+                        </address>
+                    </div>
+                    <div class="address-column" style="width: 50%;">
+                        <!-- Rechnungsadresse -->
+                        {% set billingAddress = null %}
+                        {% for address in order.addresses %}
+                            {% if address.id == order.billingAddressId %}
+                                {% set billingAddress = address %}
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if billingAddress == null %}
+                            {% set billingAddress = delivery.shippingOrderAddress %}
+                        {% endif %}
+                        
+                        <address style="color: #000000 !important;">
+                            <strong style="font-weight: 700; color: #000000 !important;">RECHNUNGSADRESSE:</strong><br>
+                            {{ billingAddress.firstName }} {{ billingAddress.lastName }}<br>
+                            {% if billingAddress.company %}
+                                {{ billingAddress.company }}<br>
+                            {% endif %}
+                            {{ billingAddress.street }}<br>
+                            {{ billingAddress.zipcode }} {{ billingAddress.city }}<br>
+                            {{ billingAddress.country.translated.name }}
+                        </address>
                     </div>
                 </div>
+            </div>
+            </section>
+            
+            <!-- Customer Care Section -->
+            <section style="margin: 30px 0;">
+                <h2>Pflege und Waschinformationen</h2>
+                <hr class="divider">
+                <p>
+                    Damit Sie lange Freude an Ihren schlafgut Produkten haben, beachten Sie bitte unsere Pflegehinweise auf den Produktetiketten.
+                </p>
+                <p style="margin: 20px 0;">
+                    <strong>Tipp:</strong> Waschen Sie Ihre Bettwäsche bei 60°C für optimale Hygiene und verwenden Sie keinen Weichspüler für längere Haltbarkeit.
+                </p>
             </section>
             
             <!-- Shipping Note -->
@@ -607,7 +554,7 @@
                 </p>
             </section>
             
-            <!-- Help Section - Replaced flexbox with table for better email compatibility -->
+            <!-- Help Section -->
             <table class="help-section" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed; width: 100%; margin: 0px 0;">
                 <tr>
                     <!-- Left Column -->
@@ -637,11 +584,10 @@
                         
                         <!-- Footer Logo moved here -->
                         <div class="footer-logo-container" style="margin-top: 40px;">
-                            <img src="https://www.schlafgut.com/media/5b/c9/d0/1730377598/BETTER_HALF 2.png" alt="Footer Logo" class="footer-logo">
+                            <img src="https://www.schlafgut.com/media/e2/d8/74/1730377403/THE_READER%202.png" alt="Footer Logo" class="footer-logo">
                         </div>
                     </td>
                     
-                    <!-- Right Column -->
                     <td class="help-column help-right" width="48%" valign="top" style="padding: 20px; background-color: #f6f6f6; border-radius: 10px; vertical-align: top;">
                         <h2 style="font-size: 24px; font-weight: 400; margin: 0 0 10px 0; padding: 0; line-height: 28px; white-space: nowrap; height: 28px; color: #000000 !important;">Mehr schlafgut!</h2>
                         <hr style="border: 0; border-top: 1px solid #000000; margin: 8px 0; width: 100%;">
@@ -649,17 +595,28 @@
                         <img src="https://www.schlafgut.com/media/d2/8c/77/1727182583/Schlafgut-356%201.jpg" width="100%" alt="Shop Preview" style="display: block; border-radius: 5px; margin: 10px 0; padding-bottom: 10px;">
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 8px;">
-                                <a href="https://www.schlafgut.com/spannbettlaken/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;">
-                                    <img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="arrow" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Spannbettlaken
-                                </a>
+                                    <a href="https://www.schlafgut.com/spannbettlaken/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Spannbettlaken</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                <a href="https://www.schlafgut.com/bettwaesche/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;">
-                                    <img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="arrow" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Bettwäsche
-                                </a>
+                                    <a href="https://www.schlafgut.com/bettwaesche/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Bettwäsche</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                <a href="https://www.schlafgut.com/kissenbezuege/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;">
-                                    <img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="arrow" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Kissenbezüge
-                                </a>
-                            </li
+                                    <a href="https://www.schlafgut.com/kissenbezuege/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Kissenbezüge</a>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <a href="https://www.schlafgut.com/fuer-kinder/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Für Kinder</a>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                    <a href="https://www.schlafgut.com/bettwaren/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Bettwaren</a>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <a href="https://www.schlafgut.com/matratzenschutz/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Matratzenschutz</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </main>
+    </div>
+</body>
+</html>

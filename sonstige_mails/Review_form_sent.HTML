@@ -66,23 +66,23 @@
         
         p {
             font-size: 13px;
-            line-height: 1.5;
+            line-height: 19px;
             margin: 0 0 10px;
             color: #000000 !important;
         }
         
         /* Status Box */
         .status-box {
-            background-color: #e8f4fd;
-            border: 1px solid #bee5eb;
-            border-left: 4px solid #17a2b8;
+            background-color: #f0f9ff;
+            border: 1px solid #bfdbfe;
+            border-left: 4px solid #3b82f6;
             padding: 20px;
             margin: 25px 0;
             border-radius: 5px;
         }
         
         .status-text {
-            color: #17a2b8;
+            color: #3b82f6;
             font-weight: 600;
             font-size: 16px;
             margin-bottom: 10px;
@@ -175,9 +175,92 @@
         /* Dividers */
         .divider {
             border: 0;
-            border-top: 1px solid #dee2e6;
-            margin: 20px 0;
+            border-top: 1px solid #000000;
+            margin: 8px 0;
             width: 100%;
+        }
+        
+        /* CTA Button */
+        .cta-button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 10px;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .response-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background-color: #3b82f6 !important;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 10px;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        /* Shipping Note */
+        .shipping-note {
+            color: #27e83b !important;
+            text-align: left;
+            margin: 20px 0;
+            margin-left: 8px;
+            margin-bottom: 60px;
+        }
+        
+        /* Help Section */
+        .help-section {
+            width: 100%;
+            margin: 0px 0;
+            border-collapse: separate;
+            table-layout: fixed;
+        }
+        
+        .help-column {
+            vertical-align: top;
+        }
+        
+        .help-right {
+            background-color: #f6f6f6;
+            border-radius: 10px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .social-icon {
+            width: 19px;
+            height: 19px;
+        }
+        
+        /* Footer */
+        .footer-logo-container {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .footer-logo {
+            width: 99px;
+            height: auto;
+            display: block;
         }
         
         /* Mobile Styles */
@@ -258,15 +341,9 @@
         <main>
             <!-- Status Box -->
             <section class="status-box">
-                <p class="status-text">
-                    {% if reviewFormData.id is defined %}
-                        Produktbewertung bearbeitet
-                    {% else %}
-                        Neue Produktbewertung erhalten
-                    {% endif %}
-                </p>
+                <p class="status-text">⭐ Produktbewertung erhalten</p>
                 <p style="margin: 0; font-size: 14px; color: #666666;">
-                    Eine Produktbewertung wurde soeben {% if reviewFormData.id is defined %}bearbeitet{% else %}abgegeben{% endif %}.
+                    Eine neue Produktbewertung wurde soeben abgegeben
                 </p>
             </section>
             
@@ -324,6 +401,86 @@
                     Überprüfen Sie die Bewertung im Admin-Bereich und entscheiden Sie über die Freigabe oder weitere Bearbeitung.
                 </p>
             </section>
+
+            <!-- CTA Buttons -->
+            <div class="cta-button-container">
+                <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5; text-align: center; margin: 30px 0;">
+                    Bewertung bearbeiten oder weitere Aktionen:<br><br>
+                    <a href="#" target="_blank" class="response-button">
+                        Bewertung moderieren
+                    </a>
+                    <a href="https://www.schlafgut.com/" target="_blank" class="cta-button">
+                        Zum Shop
+                    </a>
+                </p>
+            </div>
+            
+            <!-- Shipping Note -->
+            <section class="shipping-note">
+                <p style="color: #27e83b !important;">
+                    LÄSST DICH UND UNS GUT SCHLAFEN:<br>
+                    Wir versenden mit
+                    <strong style="font-weight: 700; color: #27e83b !important;">DHL GoGreen</strong>
+                    klimaneutral und benutzen kein Plastik bei unseren Verpackungen.
+                </p>
+            </section>
+            
+            <!-- Help Section -->
+            <table class="help-section" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed; width: 100%; margin: 0px 0;">
+                <tr>
+                    <!-- Left Column -->
+                    <td class="help-column" width="48%" valign="top" style="padding: 20px 20px 20px 0; vertical-align: top;">
+                        <h2 style="font-size: 24px; font-weight: 400; margin: 0 0 10px 0; padding: 0; line-height: 28px; white-space: nowrap; height: 28px; color: #000000 !important;">Bewertungs-Management</h2>
+                        <hr style="border: 0; border-top: 1px solid #000000; margin: 8px 0; width: 100%;">
+                        <p style="font-size: 13px; line-height: 19px; margin: 10px 0; font-style: normal;">
+                            Fragen zum Bewertungsmanagement?<br>
+                            Erreichen kannst du uns per Telefon oder Mail:<br>
+                            +49 (0)7161–8002 67<br>
+                            <a href="mailto:shop@schlafgut.com" style="color: #000000 !important; text-decoration: none;">shop@schlafgut.com</a>
+                        </p>
+                        <h2 style="font-size: 24px; font-weight: 400; margin: 20px 0 10px 0; padding: 0; line-height: 28px; white-space: nowrap; color: #000000 !important;">Folge uns!</h2>
+                        <hr style="border: 0; border-top: 1px solid #000000; margin: 8px 0; width: 100%;">
+                        <p style="font-size: 13px; line-height: 19px; margin: 10px 0;">
+                            Werde Teil der schlafgut Community und<br>
+                            folge uns auf Social Media.
+                        </p>
+                        <div class="social-icons" style="display: flex; gap: 8px; margin-top: 10px;">
+                            <a class="insta_icon" href="https://www.instagram.com/schlafgut_official/" style="display: inline-block; margin-right: 10px;">
+                                <img src="https://www.schlafgut.com/media/9b/3a/f4/1750756723/insta-b_w.png" alt="Instagram" width="20" height="20" style="display: inline-block; width: 20px; height: 20px; vertical-align: middle;">
+                            </a>
+                            <a class="fb_icon" href="https://www.facebook.com/schlafgut2/" style="display: inline-block;">
+                                <img src="https://www.schlafgut.com/media/fc/f8/58/1750836493/facebook_.png" alt="Facebook" width="20" height="20" style="display: inline-block; width: 20px; height: 20px; vertical-align: middle;">
+                            </a>
+                        </div>
+                        
+                        <!-- Footer Logo moved here -->
+                        <div class="footer-logo-container" style="margin-top: 40px;">
+                            <img src="https://www.schlafgut.com/media/e2/d8/74/1730377403/THE_READER%202.png" alt="Footer Logo" class="footer-logo">
+                        </div>
+                    </td>
+                    
+                    <td class="help-column help-right" width="48%" valign="top" style="padding: 20px; background-color: #f6f6f6; border-radius: 10px; vertical-align: top;">
+                        <h2 style="font-size: 24px; font-weight: 400; margin: 0 0 10px 0; padding: 0; line-height: 28px; white-space: nowrap; height: 28px; color: #000000 !important;">Kundenbewertungen</h2>
+                        <hr style="border: 0; border-top: 1px solid #000000; margin: 8px 0; width: 100%;">
+                        <p style="font-size: 13px; line-height: 19px; margin: 10px 0;">Echtes Kundenfeedback hilft allen!</p>
+                        <img src="https://www.schlafgut.com/media/d2/8c/77/1727182583/Schlafgut-356%201.jpg" width="100%" alt="Customer Reviews" style="display: block; border-radius: 5px; margin: 10px 0; padding-bottom: 10px;">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 8px;">
+                                    <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Echte Kundenerfahrungen</span>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                    <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Qualitätskontrolle</span>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                    <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Produktverbesserung</span>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="→" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Vertrauen schaffen</span>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
         </main>
     </div>
 </body>
