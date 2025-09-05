@@ -600,7 +600,7 @@
             <!-- Status Box -->
             <section class="status-box">
                 <p class="status-text">Bestellung in Bearbeitung</p>
-                <p style="margin: 0; font-size: 14px; color: #666666;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
+                <p style="margin: 0; font-size: 14px; color: #666666;">{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}: <strong>{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</strong></p>
             </section>
             
             <!-- Confirmation Message -->
@@ -614,7 +614,7 @@
                     <br>
                     Uns ist dein Schlaf wichtig, deswegen versenden wir deine Bestellung
                     spätestens einen Tag nach Bestelleingang. Für etwaige Rückfragen halte bitte
-                    deine <span style="font-weight: 600;"> BESTELLNUMMER </span> bereit.
+                    deine <span style="font-weight: 600;"> {% if delivery.number %}LIEFERNUMMER{% elseif invoice.number %}RECHNUNGSNUMMER{% else %}BESTELLNUMMER{% endif %} </span> bereit.
                 </p>
             </section>
 
@@ -664,7 +664,7 @@
             </section>
 
             {% set shippingAddress = order.deliveries.first.shippingOrderAddress %}
-            {% set trackingLink = "https://www.schlafgut.com/tracking/?orderNumber=" ~ order.orderNumber ~ "&zipCode=" ~ shippingAddress.zipcode ~ "&ref=karla"%}
+            {% set trackingLink = "https://www.schlafgut.com/tracking/?orderNumber=" ~ (delivery.number ? delivery.number : (invoice.number ? invoice.number : order.orderNumber)) ~ "&zipCode=" ~ shippingAddress.zipcode ~ "&ref=karla"%}
             
             <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5; text-align: center; margin: 30px 0;">
               Du kannst den Status deiner Bestellung jederzeit einsehen:<br><br>
@@ -672,7 +672,7 @@
                 Bestellung verfolgen
               </a><br><br>
               Falls du zur Eingabe deiner Daten aufgefordert wirst:<br>
-              Bestellnummer: <strong>{{ order.orderNumber }}</strong><br>
+              {% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}: <strong>{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</strong><br>
               Postleitzahl: <strong>{{ shippingAddress.zipcode }}</strong>
             </p>
             
@@ -680,8 +680,8 @@
             <section>
                 <h2 style="font-size: 24px; font-weight: 400; color: #000000 !important;">Bestelldetails</h2>
                 <p class="order-number">
-                    <span class="label">BESTELLNUMMER:</span>
-                    <span class="value">{{ order.orderNumber }}</span>
+                    <span class="label">{% if delivery.number %}LIEFERNUMMER{% elseif invoice.number %}RECHNUNGSNUMMER{% else %}BESTELLNUMMER{% endif %}:</span>
+                    <span class="value">{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</span>
                 </p>
                 <hr class="divider">
             </section>

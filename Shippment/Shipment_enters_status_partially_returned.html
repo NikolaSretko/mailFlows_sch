@@ -7,7 +7,7 @@
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
-    <title>Teilrücksendung erhalten</title>
+    <title>Teilrï¿½cksendung erhalten</title>
     <!--[if mso]>
     <style type="text/css">
         table {border-collapse: collapse !important;}
@@ -359,16 +359,16 @@
         <main>
             <!-- Return Status Box -->
             <section class="status-box">
-                <p class="status-text">=æ Teilrücksendung erhalten</p>
-                <p style="margin: 0; font-size: 14px; color: #666666;">Ein Teil deiner Bestellung {{ order.orderNumber }} wurde zurückgesendet</p>
+                <p class="status-text">=ï¿½ Teilrï¿½cksendung erhalten</p>
+                <p style="margin: 0; font-size: 14px; color: #666666;">Ein Teil deiner Bestellung {{ order.orderNumber }} wurde zurï¿½ckgesendet</p>
             </section>
             
             <!-- Processing Section -->
             <section class="processing-section">
-                <p class="processing-text">™ Rücksendung wird bearbeitet</p>
+                <p class="processing-text">ï¿½ Rï¿½cksendung wird bearbeitet</p>
                 <p style="margin: 10px 0; color: #3b82f6;">
-                    Wir haben deine Teilrücksendung erhalten und prüfen die Artikel. 
-                    Die <strong>Rückerstattung erfolgt innerhalb von 3-5 Werktagen</strong> nach Prüfung.
+                    Wir haben deine Teilrï¿½cksendung erhalten und prï¿½fen die Artikel. 
+                    Die <strong>Rï¿½ckerstattung erfolgt innerhalb von 3-5 Werktagen</strong> nach Prï¿½fung.
                 </p>
             </section>
             
@@ -376,22 +376,22 @@
             <section class="order-details">
                 <h2>Bestelldetails</h2>
                 <p>
-                    <strong>Bestellnummer:</strong> {{ order.orderNumber }}<br>
+                    <strong>{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}:</strong> {% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}<br>
                     <strong>Bestelldatum:</strong> {{ order.orderDate|date("d.m.Y H:i") }} Uhr<br>
-                    <strong>Status:</strong> Teilrücksendung erhalten<br>
-                    <strong>Ursprünglicher Betrag:</strong> {{ order.amountTotal|currency }}
+                    <strong>Status:</strong> Teilrï¿½cksendung erhalten<br>
+                    <strong>Ursprï¿½nglicher Betrag:</strong> {{ order.amountTotal|currency }}
                 </p>
                 <hr class="divider">
             </section>
             
             <!-- Refund Section -->
             <section class="refund-section">
-                <p class="refund-text">=° Rückerstattung erfolgt automatisch:</p>
+                <p class="refund-text">=ï¿½ Rï¿½ckerstattung erfolgt automatisch:</p>
                 <p style="margin: 10px 0; color: #10b981;">
-                     <strong>Sofortige Prüfung:</strong> Artikel werden binnen 24h kontrolliert<br>
-                     <strong>Automatische Rückerstattung:</strong> Betrag wird direkt überwiesen<br>
-                     <strong>Teillieferung verfügbar:</strong> Noch offene Artikel können nachgeliefert werden<br>
-                     <strong>Volle Transparenz:</strong> Du wirst über jeden Schritt informiert
+                     <strong>Sofortige Prï¿½fung:</strong> Artikel werden binnen 24h kontrolliert<br>
+                     <strong>Automatische Rï¿½ckerstattung:</strong> Betrag wird direkt ï¿½berwiesen<br>
+                     <strong>Teillieferung verfï¿½gbar:</strong> Noch offene Artikel kï¿½nnen nachgeliefert werden<br>
+                     <strong>Volle Transparenz:</strong> Du wirst ï¿½ber jeden Schritt informiert
                 </p>
             </section>
             
@@ -401,22 +401,22 @@
                     Liebe/r {{ order.orderCustomer.firstName }},
                 </p>
                 <p>
-                    wir haben deine Teilrücksendung erhalten und bearbeiten sie umgehend. Ein Teil deiner Bestellung ist bei uns eingetroffen und wird jetzt geprüft.
+                    wir haben deine Teilrï¿½cksendung erhalten und bearbeiten sie umgehend. Ein Teil deiner Bestellung ist bei uns eingetroffen und wird jetzt geprï¿½ft.
                 </p>
                 <p>
-                    Falls noch Artikel offen sind, die du behalten möchtest, werden diese separat versendet, sobald sie verfügbar sind.
+                    Falls noch Artikel offen sind, die du behalten mï¿½chtest, werden diese separat versendet, sobald sie verfï¿½gbar sind.
                 </p>
                 <p>
-                    Für die zurückgesandten Artikel erhältst du die entsprechende Rückerstattung nach der Prüfung.
+                    Fï¿½r die zurï¿½ckgesandten Artikel erhï¿½ltst du die entsprechende Rï¿½ckerstattung nach der Prï¿½fung.
                 </p>
             </section>
 
             <!-- CTA Buttons -->
             <div class="cta-button-container">
                 <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5; text-align: center; margin: 30px 0;">
-                    Verfolge den Status deiner Rücksendung:<br><br>
+                    Verfolge den Status deiner Rï¿½cksendung:<br><br>
                     <a href="#" target="_blank" class="track-button">
-                        Rückerstattung verfolgen
+                        Rï¿½ckerstattung verfolgen
                     </a>
                     <a href="https://www.schlafgut.com/" target="_blank" class="cta-button">
                         Weiter einkaufen
@@ -427,7 +427,7 @@
             <!-- Shipping Note -->
             <section class="shipping-note">
                 <p style="color: #27e83b !important;">
-                    LÄSST DICH UND UNS GUT SCHLAFEN:<br>
+                    Lï¿½SST DICH UND UNS GUT SCHLAFEN:<br>
                     Wir versenden mit
                     <strong style="font-weight: 700; color: #27e83b !important;">DHL GoGreen</strong>
                     klimaneutral und benutzen kein Plastik bei unseren Verpackungen.
@@ -442,7 +442,7 @@
                         <h2 style="font-size: 24px; font-weight: 400; margin: 0 0 10px 0; padding: 0; line-height: 28px; white-space: nowrap; height: 28px; color: #000000 !important;">Brauchst du Hilfe?</h2>
                         <hr style="border: 0; border-top: 1px solid #000000; margin: 8px 0; width: 100%;">
                         <p style="font-size: 13px; line-height: 19px; margin: 10px 0; font-style: normal;">
-                            Fragen zur Rücksendung? Wir helfen gerne!<br>
+                            Fragen zur Rï¿½cksendung? Wir helfen gerne!<br>
                             Erreichen kannst du uns per Telefon oder Mail:<br>
                             +49 (0)71618002 67<br>
                             <a href="mailto:shop@schlafgut.com" style="color: #000000 !important; text-decoration: none;">shop@schlafgut.com</a>
@@ -469,22 +469,22 @@
                     </td>
                     
                     <td class="help-column help-right" width="48%" valign="top" style="padding: 20px; background-color: #f6f6f6; border-radius: 10px; vertical-align: top;">
-                        <h2 style="font-size: 24px; font-weight: 400; margin: 0 0 10px 0; padding: 0; line-height: 28px; white-space: nowrap; height: 28px; color: #000000 !important;">Rücksende-Service</h2>
+                        <h2 style="font-size: 24px; font-weight: 400; margin: 0 0 10px 0; padding: 0; line-height: 28px; white-space: nowrap; height: 28px; color: #000000 !important;">Rï¿½cksende-Service</h2>
                         <hr style="border: 0; border-top: 1px solid #000000; margin: 8px 0; width: 100%;">
-                        <p style="font-size: 13px; line-height: 19px; margin: 10px 0;">Unser Service macht Rücksendungen einfach!</p>
+                        <p style="font-size: 13px; line-height: 19px; margin: 10px 0;">Unser Service macht Rï¿½cksendungen einfach!</p>
                         <img src="https://www.schlafgut.com/media/d2/8c/77/1727182583/Schlafgut-356%201.jpg" width="100%" alt="Return Service" style="display: block; border-radius: 5px; margin: 10px 0; padding-bottom: 10px;">
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 8px;">
-                                    <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="’" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Kostenlose Rücksendung</span>
+                                    <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="ï¿½" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Kostenlose Rï¿½cksendung</span>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                    <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="’" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Schnelle Bearbeitung</span>
+                                    <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="ï¿½" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Schnelle Bearbeitung</span>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                    <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="’" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Automatische Rückerstattung</span>
+                                    <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="ï¿½" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Automatische Rï¿½ckerstattung</span>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="’" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />30 Tage Rückgaberecht</span>
+                                <span style="color: #000000 !important; font-size: 14px; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="ï¿½" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />30 Tage Rï¿½ckgaberecht</span>
                             </li>
                         </ul>
                     </td>

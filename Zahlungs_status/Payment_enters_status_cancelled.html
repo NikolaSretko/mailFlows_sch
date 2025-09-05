@@ -366,7 +366,7 @@
             <!-- Status Box -->
             <section class="status-box">
                 <p class="status-text">Zahlung fehlgeschlagen</p>
-                <p style="margin: 0; font-size: 14px; color: #666666;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
+                <p style="margin: 0; font-size: 14px; color: #666666;">{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}: <strong>{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</strong></p>
             </section>
             
             <!-- Confirmation Message -->

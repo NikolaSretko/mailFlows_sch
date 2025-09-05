@@ -398,7 +398,7 @@
             <!-- Status Box - Green for successful refund -->
             <section class="status-box">
                 <p class="status-text">Rückerstattung abgeschlossen</p>
-                <p style="margin: 0; font-size: 14px; color: #388e3c;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
+                <p style="margin: 0; font-size: 14px; color: #388e3c;">{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}: <strong>{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</strong></p>
             </section>
             
             <!-- Message Section -->
@@ -411,7 +411,7 @@
                     {% endif %}
                 </p>
                 <p>
-                    wir haben die vollständige Rückerstattung für Ihre Bestellung {{ order.orderNumber }} erfolgreich bearbeitet.
+                    wir haben die vollständige Rückerstattung für Ihre Bestellung {% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %} erfolgreich bearbeitet.
                 </p>
                 <p>
                     <strong>Der gesamte Betrag wird in den nächsten Werktagen auf Ihr Konto zurückerstattet.</strong>
@@ -435,8 +435,8 @@
                 <h2 style="margin-top: 0; color: #333333;">Bestelldetails</h2>
                 
                 <div class="order-detail-item">
-                    <span class="order-label">Bestellnummer:</span>
-                    <strong>{{ order.orderNumber }}</strong>
+                    <span class="order-label">{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}:</span>
+                    <strong>{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</strong>
                 </div>
                 
                 <div class="order-detail-item">

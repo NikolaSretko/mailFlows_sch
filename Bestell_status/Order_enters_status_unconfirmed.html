@@ -360,7 +360,7 @@
             <!-- Status Box -->
             <section class="status-box">
                 <p class="status-text">Bestellung wartet auf Bestätigung</p>
-                <p style="margin: 0; font-size: 14px; color: #666666;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
+                <p style="margin: 0; font-size: 14px; color: #666666;">{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}: <strong>{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</strong></p>
             </section>
             
             <!-- Confirmation Message -->
@@ -395,13 +395,13 @@
                     <p style="margin: 5px 0;"><strong>Empfänger:</strong> schlafgut GmbH</p>
                     <p style="margin: 5px 0;"><strong>IBAN:</strong> DE89 3704 0044 0532 0130 00</p>
                     <p style="margin: 5px 0;"><strong>BIC:</strong> COBADEFFXXX</p>
-                    <p style="margin: 5px 0;"><strong>Verwendungszweck:</strong> {{ order.orderNumber }}</p>
+                    <p style="margin: 5px 0;"><strong>Verwendungszweck:</strong> {% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</p>
                     <p style="margin: 5px 0;"><strong>Betrag:</strong> {{ order.price.totalPrice|number_format(2, ',', '.') }}€</p>
                 </div>
                 
                 <!-- Payment CTA Button -->
                 <div style="text-align: center; margin: 20px 0;">
-                    <a href="https://www.schlafgut.com/payment/{{ order.orderNumber }}" target="_blank" class="secondary-button">
+                    <a href="https://www.schlafgut.com/payment/{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}" target="_blank" class="secondary-button">
                         Zahlung abschließen
                     </a>
                 </div>
@@ -411,8 +411,8 @@
             <section>
                 <h2 style="font-size: 24px; font-weight: 400; color: #000000 !important;">Bestelldetails</h2>
                 <p class="order-number">
-                    <span class="label">BESTELLNUMMER:</span>
-                    <span class="value">{{ order.orderNumber }}</span>
+                    <span class="label">{% if delivery.number %}LIEFERNUMMER{% elseif invoice.number %}RECHNUNGSNUMMER{% else %}BESTELLNUMMER{% endif %}:</span>
+                    <span class="value">{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</span>
                 </p>
                 <hr class="divider">
             </section>
@@ -546,7 +546,7 @@
                 
                 <!-- Support CTA Button -->
                 <div style="text-align: center; margin: 20px 0;">
-                    <a href="mailto:shop@schlafgut.com?subject=Frage%20zu%20Bestellung%20{{ order.orderNumber }}" target="_blank" class="cta-button">
+                    <a href="mailto:shop@schlafgut.com?subject=Frage%20zu%20Bestellung%20{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}" target="_blank" class="cta-button">
                         Kundenservice kontaktieren
                     </a>
                 </div>

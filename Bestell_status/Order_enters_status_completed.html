@@ -361,7 +361,7 @@
             <!-- Status Box -->
             <section class="status-box">
                 <p class="status-text">Bestellung erfolgreich abgeschlossen</p>
-                <p style="margin: 0; font-size: 14px; color: #666666;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
+                <p style="margin: 0; font-size: 14px; color: #666666;">{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}: <strong>{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</strong></p>
             </section>
             
             <!-- Confirmation Message -->
@@ -387,7 +387,7 @@
                 
                 <!-- Review CTA Button -->
                 <div style="text-align: center; margin: 20px 0;">
-                    <a href="https://www.schlafgut.com/review/{{ order.orderNumber }}" target="_blank" class="cta-button">
+                    <a href="https://www.schlafgut.com/review/{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}" target="_blank" class="cta-button">
                         Jetzt bewerten
                     </a>
                 </div>
@@ -402,7 +402,7 @@
                 
                 <!-- Reorder CTA Button -->
                 <div style="text-align: center; margin: 20px 0;">
-                    <a href="https://www.schlafgut.com/reorder/{{ order.orderNumber }}" target="_blank" class="secondary-button">
+                    <a href="https://www.schlafgut.com/reorder/{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}" target="_blank" class="secondary-button">
                         Erneut bestellen
                     </a>
                 </div>
@@ -412,8 +412,8 @@
             <section>
                 <h2 style="font-size: 24px; font-weight: 400; color: #000000 !important;">Bestelldetails</h2>
                 <p class="order-number">
-                    <span class="label">BESTELLNUMMER:</span>
-                    <span class="value">{{ order.orderNumber }}</span>
+                    <span class="label">{% if delivery.number %}LIEFERNUMMER{% elseif invoice.number %}RECHNUNGSNUMMER{% else %}BESTELLNUMMER{% endif %}:</span>
+                    <span class="value">{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</span>
                 </p>
                 <hr class="divider">
             </section>

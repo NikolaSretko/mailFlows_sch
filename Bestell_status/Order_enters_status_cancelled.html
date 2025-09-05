@@ -369,7 +369,7 @@
             <!-- Status Box -->
             <section class="status-box">
                 <p class="status-text">Bestellung storniert</p>
-                <p style="margin: 0; font-size: 14px; color: #666666;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
+                <p style="margin: 0; font-size: 14px; color: #666666;">{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}: <strong>{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</strong></p>
             </section>
             
             <!-- Confirmation Message -->
@@ -377,9 +377,9 @@
                 <p>
                     Liebe/r {{ order.orderCustomer.firstName }} {{ order.orderCustomer.lastName }},
                     <br><br>
-                    Ihre Bestellung wurde erfolgreich storniert, wie von Ihnen gewünscht.
+                    Ihre Bestellung wurde erfolgreich storniert, wie von Ihnen gewï¿½nscht.
                     <br><br>
-                    Falls Sie bereits bezahlt haben, erhalten Sie den Betrag innerhalb der nächsten 2-5 Werktage zurück.
+                    Falls Sie bereits bezahlt haben, erhalten Sie den Betrag innerhalb der nï¿½chsten 2-5 Werktage zurï¿½ck.
                 </p>
             </section>
 
@@ -387,13 +387,13 @@
             <section class="refund-info-box">
                 <h3 style="color: #17a2b8; margin-top: 0; margin-bottom: 15px;">Erstattungsinformationen</h3>
                 <p style="margin-bottom: 15px;">
-                    <strong>Erstattungsbetrag:</strong> {{ order.price.totalPrice|number_format(2, ',', '.') }}¬
+                    <strong>Erstattungsbetrag:</strong> {{ order.price.totalPrice|number_format(2, ',', '.') }}ï¿½
                 </p>
                 <p style="margin-bottom: 15px;">
                     <strong>Zahlungsmethode:</strong> {{ order.transactions.first.paymentMethod.translated.name }}
                 </p>
                 <p style="margin-bottom: 0;">
-                    Die Erstattung erfolgt automatisch auf die ursprüngliche Zahlungsquelle. Je nach Bank kann die Bearbeitung 2-5 Werktage dauern.
+                    Die Erstattung erfolgt automatisch auf die ursprï¿½ngliche Zahlungsquelle. Je nach Bank kann die Bearbeitung 2-5 Werktage dauern.
                 </p>
             </section>
             
@@ -401,15 +401,15 @@
             <section class="win-back-box">
                 <h2 style="margin-top: 0; color: #333333;">Schade, dass es nicht geklappt hat</h2>
                 <p style="margin-bottom: 15px; color: #666666;">
-                    Wir verstehen, dass sich Pläne manchmal ändern. Vielleicht finden Sie beim nächsten Mal das perfekte Produkt für Ihren Schlafkomfort.
+                    Wir verstehen, dass sich Plï¿½ne manchmal ï¿½ndern. Vielleicht finden Sie beim nï¿½chsten Mal das perfekte Produkt fï¿½r Ihren Schlafkomfort.
                 </p>
                 
                 <div class="discount-highlight">
                     <p style="margin: 0; color: #f57c00; font-weight: 600;">
-                        Exklusives Angebot: 10% Rabatt auf Ihre nächste Bestellung!
+                        Exklusives Angebot: 10% Rabatt auf Ihre nï¿½chste Bestellung!
                     </p>
                     <p style="margin: 10px 0 0 0; font-size: 12px;">
-                        Verwenden Sie den Code <strong>COMEBACK10</strong> und sparen Sie bei Ihrem nächsten Einkauf.
+                        Verwenden Sie den Code <strong>COMEBACK10</strong> und sparen Sie bei Ihrem nï¿½chsten Einkauf.
                     </p>
                 </div>
                 
@@ -504,7 +504,7 @@
                 <h2>Helfen Sie uns besser zu werden</h2>
                 <hr class="divider">
                 <p>
-                    Ihr Feedback ist uns wichtig. Teilen Sie uns gerne mit, warum Sie die Bestellung storniert haben, damit wir uns verbessern können.
+                    Ihr Feedback ist uns wichtig. Teilen Sie uns gerne mit, warum Sie die Bestellung storniert haben, damit wir uns verbessern kï¿½nnen.
                 </p>
                 <p style="margin: 20px 0;">
                     <strong>Feedback senden:</strong><br>
@@ -517,7 +517,7 @@
                 <h2>Fragen zur Stornierung?</h2>
                 <hr class="divider">
                 <p>
-                    Falls Sie Fragen zur Stornierung oder Erstattung haben, sind wir gerne für Sie da.
+                    Falls Sie Fragen zur Stornierung oder Erstattung haben, sind wir gerne fï¿½r Sie da.
                 </p>
                 <p style="margin: 20px 0;">
                     <strong>Telefon:</strong> +49 (0)71618002 67<br>
@@ -535,7 +535,7 @@
             <!-- Shipping Note -->
             <section class="shipping-note">
                 <p style="color: #27e83b !important;">
-                    LÄSST DICH UND UNS GUT SCHLAFEN:<br>
+                    Lï¿½SST DICH UND UNS GUT SCHLAFEN:<br>
                     Wir versenden mit
                     <strong style="font-weight: 700; color: #27e83b !important;">DHL GoGreen</strong>
                     klimaneutral und benutzen kein Plastik bei unseren Verpackungen.
@@ -583,22 +583,22 @@
                         <img src="https://www.schlafgut.com/media/d2/8c/77/1727182583/Schlafgut-356%201.jpg" width="100%" alt="Shop Preview" style="display: block; border-radius: 5px; margin: 10px 0; padding-bottom: 10px;">
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 8px;">
-                                    <a href="https://www.schlafgut.com/spannbettlaken/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="’" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Spannbettlaken</a>
+                                    <a href="https://www.schlafgut.com/spannbettlaken/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="ï¿½" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Spannbettlaken</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                    <a href="https://www.schlafgut.com/bettwaesche/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="’" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Bettwäsche</a>
+                                    <a href="https://www.schlafgut.com/bettwaesche/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="ï¿½" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Bettwï¿½sche</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                    <a href="https://www.schlafgut.com/kissenbezuege/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="’" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Kissenbezüge</a>
+                                    <a href="https://www.schlafgut.com/kissenbezuege/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="ï¿½" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Kissenbezï¿½ge</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                <a href="https://www.schlafgut.com/fuer-kinder/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="’" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Für Kinder</a>
+                                <a href="https://www.schlafgut.com/fuer-kinder/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="ï¿½" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Fï¿½r Kinder</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                    <a href="https://www.schlafgut.com/bettwaren/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="’" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Bettwaren</a>
+                                    <a href="https://www.schlafgut.com/bettwaren/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="ï¿½" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Bettwaren</a>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                <a href="https://www.schlafgut.com/matratzenschutz/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="’" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Matratzenschutz</a>
+                                <a href="https://www.schlafgut.com/matratzenschutz/" style="color: #000000 !important; font-size: 14px; text-decoration: none !important; display: inline-block; vertical-align: middle;"><img src="https://www.schlafgut.com/media/86/05/a8/1750674345/arrow.png" alt="ï¿½" width="14" height="14" style="display: inline-block; vertical-align: middle; margin-right: 5px;" />Matratzenschutz</a>
                             </li>
                         </ul>
                     </td>

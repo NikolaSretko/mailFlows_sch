@@ -361,7 +361,7 @@
             <!-- Shipping Status Box -->
             <section class="status-box">
                 <p class="status-text">Teilversand erfolgt</p>
-                <p style="margin: 0; font-size: 14px; color: #666666;">Ein Teil deiner Bestellung {{ order.orderNumber }} ist unterwegs</p>
+                <p style="margin: 0; font-size: 14px; color: #666666;">Ein Teil deiner Bestellung {% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %} ist unterwegs</p>
             </section>
             
             <!-- Tracking Section -->
@@ -382,7 +382,7 @@
             <section class="order-details">
                 <h2>Versanddetails</h2>
                 <p>
-                    <strong>Bestellnummer:</strong> {{ order.orderNumber }}<br>
+                    <strong>{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}:</strong> {% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}<br>
                     <strong>Bestelldatum:</strong> {{ order.orderDate|date("d.m.Y H:i") }} Uhr<br>
                     <strong>Status:</strong> Teilversand erfolgt<br>
                     <strong>Versanddatum:</strong> {{ "now"|date("d.m.Y") }}

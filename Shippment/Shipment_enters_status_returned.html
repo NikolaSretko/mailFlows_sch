@@ -360,7 +360,7 @@
             <!-- Return Status Box -->
             <section class="status-box">
                 <p class="status-text">Rücksendung erhalten</p>
-                <p style="margin: 0; font-size: 14px; color: #666666;">Deine Rücksendung für Bestellung {{ order.orderNumber }} ist bei uns angekommen</p>
+                <p style="margin: 0; font-size: 14px; color: #666666;">Deine Rücksendung für Bestellung {% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %} ist bei uns angekommen</p>
             </section>
             
             <!-- Processing Section -->
@@ -376,7 +376,7 @@
             <section class="order-details">
                 <h2>Rücksendungsdetails</h2>
                 <p>
-                    <strong>Bestellnummer:</strong> {{ order.orderNumber }}<br>
+                    <strong>{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}:</strong> {% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}<br>
                     <strong>Bestelldatum:</strong> {{ order.orderDate|date("d.m.Y H:i") }} Uhr<br>
                     <strong>Status:</strong> Vollständige Rücksendung erhalten<br>
                     <strong>Rückgabe erhalten:</strong> {{ "now"|date("d.m.Y") }}<br>

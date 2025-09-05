@@ -369,7 +369,7 @@
             <!-- Status Box -->
             <section class="status-box">
                 <p class="status-text">Rückbuchung verarbeitet</p>
-                <p style="margin: 0; font-size: 14px; color: #666666;">Bestellnummer: <strong>{{ order.orderNumber }}</strong></p>
+                <p style="margin: 0; font-size: 14px; color: #666666;">{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}: <strong>{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</strong></p>
             </section>
             
             <!-- Confirmation Message -->
@@ -387,8 +387,8 @@
             <section class="chargeback-details-box">
                 <h3 style="color: #f39c12; margin-top: 0; margin-bottom: 15px;">Details zur Rückbuchung</h3>
                 <div class="chargeback-detail">
-                    <span class="chargeback-label">Bestellnummer:</span>
-                    <strong>{{ order.orderNumber }}</strong>
+                    <span class="chargeback-label">{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}:</span>
+                    <strong>{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</strong>
                 </div>
                 <div class="chargeback-detail">
                     <span class="chargeback-label">Betrag:</span>
@@ -418,7 +418,7 @@
                 
                 <!-- Support CTA Button -->
                 <div style="text-align: center; margin: 20px 0;">
-                    <a href="mailto:shop@schlafgut.com?subject=Rückbuchung%20Bestellung%20{{ order.orderNumber }}" target="_blank" class="cta-button">
+                    <a href="mailto:shop@schlafgut.com?subject=Rückbuchung%20Bestellung%20{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}" target="_blank" class="cta-button">
                         Kundenservice kontaktieren
                     </a>
                 </div>
@@ -428,8 +428,8 @@
             <section>
                 <h2 style="font-size: 24px; font-weight: 400; color: #000000 !important;">Bestelldetails</h2>
                 <p class="order-number">
-                    <span class="label">BESTELLNUMMER:</span>
-                    <span class="value">{{ order.orderNumber }}</span>
+                    <span class="label">{% if delivery.number %}LIEFERNUMMER{% elseif invoice.number %}RECHNUNGSNUMMER{% else %}BESTELLNUMMER{% endif %}:</span>
+                    <span class="value">{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</span>
                 </p>
                 <hr class="divider">
             </section>

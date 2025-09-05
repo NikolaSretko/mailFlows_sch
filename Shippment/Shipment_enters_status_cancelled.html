@@ -359,8 +359,8 @@
         <main>
             <!-- Cancellation Status Box -->
             <section class="status-box">
-                <p class="status-text">❌ Versand storniert</p>
-                <p style="margin: 0; font-size: 14px; color: #666666;">Der Versand für Bestellung {{ order.orderNumber }} wurde abgebrochen</p>
+                <p class="status-text">Versand storniert</p>
+                <p style="margin: 0; font-size: 14px; color: #666666;">Der Versand für Bestellung {% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %} wurde abgebrochen</p>
             </section>
             
             <!-- Information Section -->
@@ -376,7 +376,7 @@
             <section class="order-details">
                 <h2>Bestelldetails</h2>
                 <p>
-                    <strong>Bestellnummer:</strong> {{ order.orderNumber }}<br>
+                    <strong>{% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}:</strong> {% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}<br>
                     <strong>Bestelldatum:</strong> {{ order.orderDate|date("d.m.Y H:i") }} Uhr<br>
                     <strong>Status:</strong> Versand storniert<br>
                     <strong>Gesamtbetrag:</strong> {{ order.amountTotal|currency }}

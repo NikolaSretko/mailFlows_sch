@@ -505,7 +505,7 @@
                 Bestellung anzeigen
               </a><br><br>
               Falls du zur Eingabe deiner Daten aufgefordert wirst:<br>
-              Bestellnummer: <strong>{{ order.orderNumber }}</strong><br>
+              {% if delivery.number %}Liefernummer{% elseif invoice.number %}Rechnungsnummer{% else %}Bestellnummer{% endif %}: <strong>{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</strong><br>
               Postleitzahl: <strong>{{ shippingAddress.zipcode }}</strong>
             </p>
             
@@ -513,8 +513,8 @@
             <section>
                 <h2 style="font-size: 24px; font-weight: 400; color: #000000 !important;">Bestelldetails</h2>
                 <p class="order-number">
-                    <span class="label">BESTELLNUMMER:</span>
-                    <span class="value">{{ order.orderNumber }}</span>
+                    <span class="label">{% if delivery.number %}LIEFERNUMMER{% elseif invoice.number %}RECHNUNGSNUMMER{% else %}BESTELLNUMMER{% endif %}:</span>
+                    <span class="value">{% if delivery.number %}{{ delivery.number }}{% elseif invoice.number %}{{ invoice.number }}{% else %}{{ order.orderNumber }}{% endif %}</span>
                 </p>
                 <hr class="divider">
             </section>
